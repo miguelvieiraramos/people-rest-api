@@ -19,5 +19,18 @@ class Person(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def update_person(self, name, last_name):
+        self.name = name
+        self.last_name = last_name
+        db.session.commit()
+
+    def update_name(self, name):
+        self.name = name
+        db.session.commit()
+
+    def update_last_name(self, last_name):
+        self.last_name = last_name
+        db.session.commit()
+
     def serialized_person(self):
         return {"id": str(self.id), "name": self.name, "last_name": self.last_name}
