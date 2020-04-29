@@ -1,3 +1,5 @@
+import os
+
 class Config:
-    SECRET_KEY = '}lns.+~i(v}170;x8(@l>l2c$cW?M;'
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:@localhost/people'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')

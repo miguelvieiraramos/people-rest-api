@@ -75,3 +75,11 @@ class TestRest(unittest.TestCase):
                                                 data=json.dumps({"data": "dummy"}))
         self.assertEqual(response.json, {"message": "Bad request"})
         self.assertEqual(response.status_code, 400)
+
+
+    def test_remove_person(self):
+        person = Person('Rodrigo', 'Amarante')
+        db.session.add(person)
+        db.session.commit()
+        response = self.app.test_client().delete('/people/1')
+        self.assertEqual(response.status_code, 204)

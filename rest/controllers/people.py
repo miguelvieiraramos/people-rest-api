@@ -53,3 +53,11 @@ def partially_update_person(id):
         return jsonify(person.serialized_person()), 200
     else:
         return jsonify({"message": "Bad request"}), 400
+
+
+@people.route('/people/<int:id>', methods=['DELETE'])
+def remove_person(id):
+    person = Person.query.get_or_404(id)
+    if person:
+        person.remove_person()
+        return Response(status=204)

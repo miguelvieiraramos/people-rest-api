@@ -19,6 +19,10 @@ class Person(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def remove_person(self):
+        db.session.delete(self)
+        db.session.commit()
+
     def update_person(self, name, last_name):
         self.name = name
         self.last_name = last_name
